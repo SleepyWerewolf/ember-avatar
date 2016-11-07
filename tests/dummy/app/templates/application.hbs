@@ -1,7 +1,33 @@
 {{#zf-off-canvas as |section| }}
 
   {{#if section.isOffCanvasLeft}}
-    <p>Example left off canvas content</p>
+    {{#zf-accordion-menu}}
+      <!-- Item 1 -->
+      <li>
+        <a href="#">Item 1</a>
+        <ul class="menu vertical nested">
+          <li>
+            Attribute 1
+            {{#zf-slider}}
+              <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
+              <span class="slider-fill" data-slider-fill></span>
+              <input type="hidden">
+            {{/zf-slider}}
+          </li>
+          <li>
+            Attribute 2
+            {{#zf-slider}}
+              <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
+              <span class="slider-fill" data-slider-fill></span>
+              <input type="hidden">
+            {{/zf-slider}}
+          </li>
+        </ul>
+      </li>
+
+      <!-- Item 2 -->
+      <li><a href="#">Item 2</a></li>
+    {{/zf-accordion-menu}}
   {{else}}
 
     {{main-canvas}}
