@@ -1,0 +1,12 @@
+{{#zf-off-canvas showRightOffCanvas=true as |section| }}
+
+  {{#if section.isOffCanvasLeft}}
+    <p>Example left off canvas content</p>
+  {{else}}
+
+    {{main-canvas}}
+
+    <!-- Buttons to toggle off canvas -->
+    <button class="button" data-toggle="zf-off-canvas-left">Toggle Sidebar</button>
+  {{/if}}
+{{/zf-off-canvas}}

@@ -1,0 +1,1 @@
+export { default } from 'ember-avatar/components/main-canvas/component';
