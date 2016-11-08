@@ -26,13 +26,32 @@
       </li>
 
       <!-- Item 2 -->
-      <li><a href="#">Item 2</a></li>
+      <li>
+        <a href="#">Item 2</a>
+        <ul class="menu vertical nested">
+          <li>
+            Some more attributes
+            {{#zf-slider}}
+              <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
+              <span class="slider-fill" data-slider-fill></span>
+              <input type="hidden">
+            {{/zf-slider}}
+          </li>
+          <li>
+            Slide me!!!
+            {{#zf-slider}}
+              <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
+              <span class="slider-fill" data-slider-fill></span>
+              <input type="hidden">
+            {{/zf-slider}}
+          </li>
+        </ul>
+      </li>
     {{/zf-accordion-menu}}
   {{else}}
-
-    {{main-canvas}}
-
     <!-- Buttons to toggle off canvas -->
-    <button class="button" data-toggle="zf-off-canvas-left">Toggle Sidebar</button>
+    <button id="sidebar-toggle" class="button" data-toggle="zf-off-canvas-left">Toggle Sidebar</button>
   {{/if}}
 {{/zf-off-canvas}}
+
+{{main-canvas}}

@@ -4,3 +4,18 @@
 
 // Component styles
 @import "main-canvas";
+
+.off-canvas-content, .js-off-canvas-exit {
+  height: 100vh;
+  background: transparent;
+}
+
+.off-canvas {
+  .is-accordion-submenu-parent {
+    border-bottom: 2px solid #cacaca;
+  }
+}
+
+#sidebar-toggle {
+  margin-top: 45vh;
+}
