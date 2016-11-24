@@ -1,0 +1,47 @@
+import Ember from 'ember';
+import Three from 'npm:three';
+
+const { innerWidth, innerHeight } = window;
+
+export default Ember.Service.extend({
+  scene: null,
+  camera: null,
+  mesh: null,
+  glRenderer: null,
+
+  init() {
+    this._super(...arguments);
+
+    this.scene = new Three.Scene();
+
+    this.camera = new Three.PerspectiveCamera(75, innerWidth / innerHeight, 1, 10000);
+    this.camera.position.z = 1000;
+
+    const geometry = new Three.BoxGeometry(200, 200, 200);
+    const material = new Three.MeshBasicMaterial({
+      color: 0xff000,
+      wireframe: true
+    });
+
+    this.mesh = new Three.Mesh(geometry, material);
+    this.scene.add(this.mesh);
+
+    this.glRenderer = new Three.WebGLRenderer();
+    this.glRenderer.setSize(innerWidth, innerHeight);
+  },
+
+  getDomElement() {
+    return this.get('glRenderer').domElement;
+  },
+
+  animateMesh() {
+    const mesh = this.get('mesh');
+
+    mesh.rotation.x += 0.01;
+    mesh.rotation.y += 0.02;
+  },
+
+  render() {
+    this.get('glRenderer').render(this.get('scene'), this.get('camera'));
+  }
+});
