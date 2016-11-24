@@ -11,7 +11,11 @@
 }
 
 .off-canvas {
+  height: 100vh;
+  background: #fefefe;
+
   .is-accordion-submenu-parent {
+    background: #e6e6e6;
     border-bottom: 2px solid #cacaca;
   }
 }
