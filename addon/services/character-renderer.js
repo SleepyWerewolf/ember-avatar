@@ -39,6 +39,8 @@ export default Ember.Service.extend({
 
       this.scene.add(object);
     });
+
+    window.addEventListener('resize', this.onWindowResize.bind(this), false);
   },
 
   animateMesh() {
@@ -50,5 +52,14 @@ export default Ember.Service.extend({
 
   render() {
     this.get('glRenderer').render(this.get('scene'), this.get('camera'));
+  },
+
+  onWindowResize(event) {
+    const camera = this.get('camera');
+    const { innerWidth, innerHeight } = window;
+
+    this.get('glRenderer').setSize(innerWidth, innerHeight);
+    camera.aspect = innerWidth / innerHeight;
+    camera.updateProjectionMatrix();
   }
 });
