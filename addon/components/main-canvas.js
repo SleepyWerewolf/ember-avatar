@@ -16,7 +16,7 @@ export default Ember.Component.extend({
   didInsertElement() {
     this._super(...arguments);
 
-    this.$().append(this.get('characterRenderer').getDomElement());
+    this.$().append(this.get('characterRenderer.glRenderer.domElement'));
     this.animate();
   },
 
