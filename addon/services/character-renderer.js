@@ -15,7 +15,7 @@ export default Ember.Service.extend({
     this.scene = new Three.Scene();
 
     this.camera = new Three.PerspectiveCamera(75, innerWidth / innerHeight, 1, 10000);
-    this.camera.position.set(0, 10, 25);
+    this.camera.position.set(0, 10, 15);
 
     // const geometry = new Three.BoxGeometry(200, 200, 200);
     const material = new Three.MeshBasicMaterial({
@@ -34,20 +34,23 @@ export default Ember.Service.extend({
 
     const jsonLoader = new Three.JSONLoader();
 
-    jsonLoader.load('assets/threejs_test/10_details_model.json', geometry => {
-      const object = new Three.Mesh(geometry, material);
+    jsonLoader.load('assets/threejs_test/12_texturing.json', (geometry, materials) => {
+      const material = new Three.MeshLambertMaterial(materials);
 
-      this.scene.add(object);
+      this.mesh = new Three.Mesh(geometry, material);
+      this.scene.add(this.mesh);
     });
 
     window.addEventListener('resize', this.onWindowResize.bind(this), false);
   },
 
   animateMesh() {
-    // const mesh = this.get('mesh');
-    //
-    // mesh.rotation.x += 0.01;
-    // mesh.rotation.y += 0.02;
+    const mesh = this.get('mesh');
+
+    if (mesh) {
+      //mesh.rotation.x += 0.01;
+      mesh.rotation.y += 0.02;
+    }
   },
 
   render() {
